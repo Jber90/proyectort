@@ -1,0 +1,29 @@
+<project name="Sample usage of Salesforce Ant tasks" default="test" basedir="." xmlns:sf="antlib:com.salesforce">
+
+    <property file="build.properties"/>
+    <property environment="env"/>
+
+    <!-- Setting default value for username, password and session id properties to empty string
+     so unset values are treated as empty. Without this, ant expressions such as ${sf.username}
+     will be treated literally.
+     -->
+    <condition property="sf.username.jbernal” value=""> <not> <isset property="sf.username.jbernal”/> </not> </condition>
+    <condition property="sf.password.jbernal” value=""> <not> <isset property="sf.password.jbernal”/> </not> </condition>
+
+    <taskdef resource="com/salesforce/antlib.xml" uri="antlib:com.salesforce">
+        <classpath>
+            <pathelement location="ant-salesforce.jar" />
+        </classpath>
+    </taskdef>
+
+    <!-- one target for each org credentials that we have in build.properties-->
+
+	<target name="deployjbernal">
+        <!-- Upload the contents of the "mypkg" package -->
+        <sf:deploy username="${sf.username.jbernal}" password="${sf.password.jbernal}"  serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}"
+			deployRoot="../src" rollbackOnError="true"/>
+
+    </target>
+
+	
+</project>
