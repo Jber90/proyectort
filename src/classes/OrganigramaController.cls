@@ -15,7 +15,7 @@ public class OrganigramaController {
     
     public OrganigramaController(){
         headManager = Utils.getEmployees('Head Manager');
-        projectManager = Utils.getEmployees('Project Managers');
+        projectManager = Utils.getEmployees('Project Manager');
         qaManager = Utils.getEmployees('QA Manager');
         resourcesManager = Utils.getEmployees('Resources Manager');
         peManager = Utils.getEmployees('PE Manager');
