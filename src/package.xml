@@ -27,5 +27,21 @@
         <members>Technology__c</members>
         <name>CustomTab</name>
     </types>
+    <types>
+        <members>Dashboard</members>
+        <members>Dashboard/BZCKWCJgyTTVDKLebmZcFAMCskKRbW</members>
+        <members>Dashboard/Employees</members>
+        <name>Dashboard</name>
+    </types>
+    <types>
+        <members>Reports</members>
+        <members>Reports/Candidates</members>
+        <members>Reports/Employees</members>
+        <members>Reports/EmployeesRoles</members>
+        <members>Reports/EmployeesStatus</members>
+        <members>Reports/Employees_wanting_to_change_project_or_t</members>
+        <members>Reports/Employees_without_project</members>
+        <name>Report</name>
+    </types>
     <version>36.0</version>
 </Package>
