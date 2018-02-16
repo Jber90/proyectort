@@ -1,0 +1,255 @@
+<apex:page controller="OrganigramaController" id="organigrama" title="Organization Chart Altimetrik">
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        
+        <apex:slds />
+        <style>
+            .slds-scope img {
+            margin-bottom: 5px;
+            border-top: 5px solid #E49B1D;
+            border-bottom: 5px solid #E49B1D;
+            }
+        </style>
+        
+        <div class="slds-p-around--small">
+            <div class="slds-text-title_caps slds-text-align_center slds-grid slds-grid_align-space">
+                <div class="slds-card slds-text-title_caps slds-text-align_center" style="width: 18%;">
+                    <div class="slds-m-top--medium slds-m-left--medium slds-m-right--medium">
+                        Head Manager 
+                    </div>
+                    <apex:dataTable value="{!headManager}" var="hm" style="width: 90%;" styleClass="slds-m-top--medium slds-m-left--small slds-m-right--small  slds-m-bottom--medium">
+                        <apex:column >
+                            <apex:outputText value="{!hm.Imagen__c}" escape="false"/>
+                            <apex:outputLink value="/one/one.app#/sObject/{!hm.Id}/view" target="_blank">{!hm.name}</apex:outputLink>
+                        </apex:column>
+                    </apex:dataTable>
+                </div>
+            </div>
+            <div class="slds-text-title_caps slds-text-align_center slds-m-bottom--large slds-grid slds-grid_align-space">
+                
+                <div class="slds-text-title_caps slds-text-align_center slds-m-top--large">
+                    <div class="slds-card slds-text-title_caps slds-text-align_center slds-m-bottom--large " >
+                        <div class="slds-m-top--medium slds-m-left--medium slds-m-right--medium">
+                            Project Manager 
+                        </div>
+                        
+                        <apex:dataTable value="{!projectManager}" var="pm" style="width: 90%;" styleClass="slds-m-top--medium slds-m-left--small slds-m-right--small  slds-m-bottom--medium ">
+                            
+                            <apex:column >
+                                <apex:outputText value="{!pm.Imagen__c}" escape="false"/>
+                                <apex:outputLink value="/one/one.app#/sObject/{!pm.Id}/view" target="_blank">{!pm.name}</apex:outputLink> 
+                            </apex:column>
+                        </apex:dataTable>
+                    </div>
+                    <div class="slds-card slds-text-title_caps slds-text-align_center slds-m-top--large" >
+                        
+                        <div class="slds-m-top--medium slds-m-left--medium slds-m-right--medium">
+                            Team Leader
+                        </div>
+                        <apex:dataTable value="{!teamLeader}" var="a" style="width: 90%;" styleClass="slds-m-top--medium slds-m-left--small slds-m-right--small  slds-m-bottom--medium ">
+                            <apex:column >
+                                <apex:outputText value="{!a.Imagen__c}" escape="false"/>
+                                <apex:outputLink value="/one/one.app#/sObject/{!a.Id}/view" target="_blank">{!a.name}</apex:outputLink>
+                            </apex:column>
+                        </apex:dataTable>
+                    </div>
+                    <div class="slds-card slds-text-title_caps slds-text-align_center slds-m-top--large">
+                        
+                        <div class="slds-m-top--medium slds-m-left--medium slds-m-right--medium">
+                            Developer
+                        </div>
+                        <apex:dataTable value="{!developer}" var="a" style="width: 90%;" styleClass="slds-m-top--medium slds-m-left--small slds-m-right--small  slds-m-bottom--medium ">
+                            <apex:column >
+                                <apex:outputText value="{!a.Imagen__c}" escape="false"/>
+                                <apex:outputLink value="/one/one.app#/sObject/{!a.Id}/view" target="_blank">{!a.name}</apex:outputLink>
+                            </apex:column>
+                        </apex:dataTable>
+                    </div>
+                </div>
+                <div class="slds-text-title_caps slds-text-align_center slds-m-top--large">
+                    <div class="slds-card slds-text-title_caps slds-text-align_center slds-m-bottom--large" >
+                        
+                        <div class="slds-m-top--medium slds-m-left--medium slds-m-right--medium">
+                            QA Manager 
+                        </div>
+                        <apex:dataTable value="{!qaManager}" var="qam" style="width: 90%;" styleClass="slds-m-top--medium slds-m-left--small slds-m-right--small slds-m-bottom--medium ">
+                            <apex:column >
+                                <apex:outputText value="{!qam.Imagen__c}" escape="false"/>
+                                <apex:outputLink value="/one/one.app#/sObject/{!qam.Id}/view" target="_blank">{!qam.name}</apex:outputLink> 
+                            </apex:column>
+                        </apex:dataTable>
+                    </div>
+                    <div class="slds-card slds-text-title_caps slds-text-align_center slds-m-top--large" >
+                        
+                        <div class="slds-m-top--medium slds-m-left--medium slds-m-right--medium">
+                            QA Lead
+                        </div>
+                        <apex:dataTable value="{!qALead}" var="a" style="width: 90%;" styleClass="slds-m-top--medium slds-m-left--small slds-m-right--small  slds-m-bottom--medium ">
+                            <apex:column >
+                                <apex:outputText value="{!a.Imagen__c}" escape="false"/>
+                                <apex:outputLink value="/one/one.app#/sObject/{!a.Id}/view" target="_blank">{!a.name}</apex:outputLink>
+                            </apex:column>
+                        </apex:dataTable>
+                    </div>
+                    <div class="slds-card slds-text-title_caps slds-text-align_center slds-m-top--large" >
+                        
+                        <div class="slds-m-top--medium slds-m-left--medium slds-m-right--medium">
+                            QA
+                        </div>
+                        <apex:dataTable value="{!qA}" var="a" style="width: 90%;" styleClass="slds-m-top--medium slds-m-left--small slds-m-right--small  slds-m-bottom--medium ">
+                            <apex:column >
+                                <apex:outputText value="{!a.Imagen__c}" escape="false"/>
+                                <apex:outputLink value="/one/one.app#/sObject/{!a.Id}/view" target="_blank">{!a.name}</apex:outputLink>
+                            </apex:column>
+                        </apex:dataTable>
+                    </div>
+                </div>
+                <div class="slds-text-title_caps slds-text-align_center slds-m-top--large">
+                    <div class="slds-card slds-text-title_caps slds-text-align_center slds-m-bottom--large" >
+                        
+                        <div class="slds-m-top--medium slds-m-left--medium slds-m-right--medium">
+                            Resources Manager
+                        </div>
+                        <apex:dataTable value="{!resourcesManager}" var="rm" style="width: 90%;" styleClass="slds-m-top--medium slds-m-left--small slds-m-right--small  slds-m-bottom--medium ">
+                            <apex:column >
+                                <apex:outputText value="{!rm.Imagen__c}" escape="false"/>
+                                <apex:outputLink value="/one/one.app#/sObject/{!rm.Id}/view" target="_blank">{!rm.name}</apex:outputLink> 
+                            </apex:column>
+                        </apex:dataTable>
+                    </div>
+                </div>
+                <div class="slds-text-title_caps slds-text-align_center slds-m-top--large" >
+                    <div class="slds-card slds-text-title_caps slds-text-align_center slds-m-bottom--large" >
+                        
+                        <div class="slds-m-top--medium slds-m-left--medium slds-m-right--medium">
+                            PE Manager
+                        </div>
+                        <apex:dataTable value="{!peManager}" var="pem" style="width: 90%;" styleClass="slds-m-top--medium slds-m-left--small slds-m-right--small  slds-m-bottom--medium ">
+                            <apex:column >
+                                <apex:outputText value="{!pem.Imagen__c}" escape="false"/>
+                                <apex:outputLink value="/one/one.app#/sObject/{!pem.Id}/view" target="_blank">{!pem.name}</apex:outputLink> 
+                            </apex:column>
+                        </apex:dataTable>
+                    </div>
+                    <div class="slds-card slds-text-title_caps slds-text-align_center slds-m-top--large" >
+                        
+                        <div class="slds-m-top--medium slds-m-left--medium slds-m-right--medium">
+                            People Experience
+                        </div>
+                        <apex:dataTable value="{!peopleExperience}" var="pe" style="width: 90%;" styleClass="slds-m-top--medium slds-m-left--small slds-m-right--small  slds-m-bottom--medium ">
+                            <apex:column >
+                                <apex:outputText value="{!pe.Imagen__c}" escape="false"/>
+                                <apex:outputLink value="/one/one.app#/sObject/{!pe.Id}/view" target="_blank">{!pe.name}</apex:outputLink> 
+                            </apex:column>
+                        </apex:dataTable>
+                    </div>
+                </div>
+                <div class="slds-text-title_caps slds-text-align_center slds-m-top--large">
+                    <div class="slds-card slds-text-title_caps slds-text-align_center slds-m-bottom--large">
+                        
+                        <div class="slds-m-top--medium slds-m-left--medium slds-m-right--medium">
+                            Financial Manager
+                        </div>
+                        <apex:dataTable value="{!financialManager}" var="fm" style="width: 90%;" styleClass="slds-m-top--medium slds-m-left--small slds-m-right--small  slds-m-bottom--medium ">
+                            <apex:column >
+                                <apex:outputText value="{!fm.Imagen__c}" escape="false"/>
+                                <apex:outputLink value="/one/one.app#/sObject/{!fm.Id}/view" target="_blank">{!fm.name}</apex:outputLink> 
+                            </apex:column>
+                        </apex:dataTable>
+                    </div>
+                    <div class="slds-card slds-text-title_caps slds-text-align_center slds-m-top--large" >
+                        
+                        <div class="slds-m-top--medium slds-m-left--medium slds-m-right--medium">
+                            Administracion
+                        </div>
+                        <apex:dataTable value="{!administracion}" var="a" style="width: 90%;" styleClass="slds-m-top--medium slds-m-left--small slds-m-right--small  slds-m-bottom--medium ">
+                            <apex:column >
+                                <apex:outputText value="{!a.Imagen__c}" escape="false"/>
+                                <apex:outputLink value="/one/one.app#/sObject/{!a.Id}/view" target="_blank">{!a.name}</apex:outputLink>
+                            </apex:column>
+                        </apex:dataTable>
+                    </div>
+                </div>
+                <div class="slds-text-title_caps slds-text-align_center slds-m-top--large">
+                    <div class="slds-card slds-text-title_caps slds-text-align_center slds-m-bottom--large">
+                        
+                        <div class="slds-m-top--medium slds-m-left--medium slds-m-right--medium">
+                            Marketing Manager
+                        </div>
+                        <apex:dataTable value="{!marketingManager}" var="mm" style="width: 90%;" styleClass="slds-m-top--medium slds-m-left--small slds-m-right--small  slds-m-bottom--medium ">
+                            <apex:column >
+                                <apex:outputText value="{!mm.Imagen__c}" escape="false"/>
+                                <apex:outputLink value="/one/one.app#/sObject/{!mm.Id}/view" target="_blank">{!mm.name}</apex:outputLink> 
+                            </apex:column>
+                        </apex:dataTable>
+                    </div>
+                </div>
+                <div class="slds-text-title_caps slds-text-align_center slds-m-top--large">
+                    <div class="slds-card slds-text-title_caps slds-text-align_center slds-m-bottom--large">
+                        
+                        <div class="slds-m-top--medium slds-m-left--medium slds-m-right--medium">
+                            PI Analyst
+                        </div>
+                        <apex:dataTable value="{!piAnalyst}" var="pim" style="width: 90%;" styleClass="slds-m-top--medium slds-m-left--small slds-m-right--small  slds-m-bottom--medium ">
+                            <apex:column >
+                                <apex:outputText value="{!pim.Imagen__c}" escape="false"/>
+                                <apex:outputLink value="/one/one.app#/sObject/{!pim.Id}/view" target="_blank">{!pim.name}</apex:outputLink>
+                            </apex:column>
+                        </apex:dataTable>
+                    </div>
+                    <div class="slds-card slds-text-title_caps slds-text-align_center slds-m-bottom--large" >
+                        
+                        <div class="slds-m-top--medium slds-m-left--medium slds-m-right--medium">
+                            Architect
+                        </div>
+                        <apex:dataTable value="{!architect}" var="arch" style="width: 90%;" styleClass="slds-m-top--medium slds-m-left--small slds-m-right--small  slds-m-bottom--medium ">
+                            <apex:column >
+                                <apex:outputText value="{!arch.Imagen__c}" escape="false"/>
+                                <apex:outputLink value="/one/one.app#/sObject/{!arch.Id}/view" target="_blank">{!arch.name}</apex:outputLink>
+                            </apex:column>
+                        </apex:dataTable>
+                    </div>
+                </div>
+                <div class="slds-text-title_caps slds-text-align_center slds-m-top--large">
+                    <div class="slds-card slds-text-title_caps slds-text-align_center slds-m-bottom--large">
+                        
+                        <div class="slds-m-top--medium slds-m-left--medium slds-m-right--medium">
+                            Technical Assistance
+                        </div>
+                        <apex:dataTable value="{!technicalAssistance}" var="ta" style="width: 90%;" styleClass="slds-m-top--medium slds-m-left--small slds-m-right--small  slds-m-bottom--medium ">
+                            <apex:column >
+                                <apex:outputText value="{!ta.Imagen__c}" escape="false"/>
+                                <apex:outputLink value="/one/one.app#/sObject/{!ta.Id}/view" target="_blank">{!ta.name}</apex:outputLink>
+                            </apex:column>
+                        </apex:dataTable>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-text-title_caps slds-text-align_center slds-m-bottom--large slds-grid slds-grid_align-space">
+                <div class="slds-card slds-text-title_caps slds-text-align_center" style="width: 30%;">
+                    
+                    <div class="slds-m-top--medium slds-m-left--medium slds-m-right--medium">
+                        Projects
+                    </div>
+                    <apex:dataTable value="{!projects}" var="proj" styleClass="slds-m-top--medium slds-m-left--medium slds-m-right--medium  slds-m-bottom--medium ">
+                        <apex:column >
+                            <apex:outputLink value="/one/one.app#/sObject/{!proj.Id}/view" target="_blank">{!proj.name}</apex:outputLink>
+                        </apex:column>
+                    </apex:dataTable>
+                </div>
+                <div class="slds-card slds-text-title_caps slds-text-align_center" style="width: 30%;">
+                    
+                    <div class="slds-m-top--medium slds-m-left--medium slds-m-right--medium">
+                        Designers
+                    </div>
+                    <apex:dataTable value="{!designer}" var="des" styleClass="slds-m-top--medium slds-m-left--medium slds-m-right--medium  slds-m-bottom--medium ">
+                        <apex:column >
+                            <apex:outputText value="{!des.Imagen__c}" escape="false"/>
+                            <apex:outputLink value="/one/one.app#/sObject/{!des.Id}/view" target="_blank">{!des.name}</apex:outputLink>
+                        </apex:column>
+                    </apex:dataTable>
+                </div>
+            </div>
+            
+        </div>
+    </html>
+</apex:page>

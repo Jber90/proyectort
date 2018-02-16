@@ -108,6 +108,18 @@
         <type>TextArea</type>
     </fields>
     <fields>
+        <fullName>Trainee__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Trainee</label>
+        <referenceTo>Employee__c</referenceTo>
+        <relationshipLabel>Trainings (Trainee)</relationshipLabel>
+        <relationshipName>Trainings1</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>Trainer__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
@@ -142,6 +154,33 @@
         <description>Project Path Training</description>
         <label>Project Path</label>
     </recordTypes>
-    <searchLayouts/>
+    <searchLayouts>
+        <customTabListAdditionalFields>Start_Date__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>End_Date__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Trainee__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Trainer__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Project__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>Start_Date__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>End_Date__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Trainee__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Trainer__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Project__c</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Start_Date__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>End_Date__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Trainee__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Trainer__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Project__c</lookupPhoneDialogsAdditionalFields>
+        <searchFilterFields>NAME</searchFilterFields>
+        <searchFilterFields>Start_Date__c</searchFilterFields>
+        <searchFilterFields>End_Date__c</searchFilterFields>
+        <searchFilterFields>Trainee__c</searchFilterFields>
+        <searchFilterFields>Trainer__c</searchFilterFields>
+        <searchFilterFields>Project__c</searchFilterFields>
+        <searchResultsAdditionalFields>Start_Date__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>End_Date__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Trainee__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Trainer__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Project__c</searchResultsAdditionalFields>
+    </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
 </CustomObject>

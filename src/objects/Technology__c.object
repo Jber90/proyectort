@@ -56,6 +56,42 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <fields>
+        <fullName>Oriented_To__c</fullName>
+        <externalId>false</externalId>
+        <label>Oriented To</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Business Analyst</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Designer</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Developer</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Dev Ops</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>QA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Architect</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
         <fullName>Position__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
@@ -68,16 +104,12 @@
         <type>Lookup</type>
     </fields>
     <fields>
-        <fullName>Project__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
+        <fullName>Resources__c</fullName>
         <externalId>false</externalId>
-        <label>Project</label>
-        <referenceTo>Project__c</referenceTo>
-        <relationshipLabel>Technologies</relationshipLabel>
-        <relationshipName>Technologies</relationshipName>
+        <label>Resources</label>
         <required>false</required>
         <trackTrending>false</trackTrending>
-        <type>Lookup</type>
+        <type>TextArea</type>
     </fields>
     <label>Technology</label>
     <listViews>

@@ -1,0 +1,83 @@
+<apex:page controller="RankingController" id="ranking" title="Ranking">
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        
+        <apex:slds />
+        
+        <div class="slds-p-around--large slds-m-top--large slds-m-bottom--large">
+            <apex:form >
+                <div class="slds-text-title_caps slds-float_right slds-card slds-p-around--small slds-m-top--large">
+                     <div class="slds-m-bottom--large">INFO CHART</div>
+                    <div style="color: skyblue !important;">SALESFORCE</div>
+                    <div style="color: green !important;">MOBILE</div>
+                    <div style="color: orange !important;">CHANGE ROLE OR PROJECT</div>
+                </div>
+                <apex:outputPanel id="results">
+                    <div>
+                        <div class="slds-grid slds-text-title_caps">
+                            <div class="slds-form-element slds-col slds-size_1-of-4 slds-m-right--small slds-m-top--xxx-small">
+                                <label class="slds-form-element__label">Role</label>
+                                <div class="slds-form-element__control">
+                                    <div class="slds-select_container">
+                                        <apex:selectList size="1" value="{!role}" styleClass="slds-select">
+                                            <apex:selectOptions value="{!RoleItems}" />
+                                        </apex:selectList>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slds-form-element slds-col slds-size_1-of-4 slds-m-top--xxx-small">
+                                <label class="slds-form-element__label">Seniority</label>
+                                <div class="slds-form-element__control">
+                                    <div class="slds-select_container">
+                                        <apex:selectList size="1" value="{!seniority}" styleClass="slds-select">
+                                            <apex:selectOptions value="{!SeniorityItems}" />
+                                        </apex:selectList>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slds-col slds-size_2-of-4 slds-m-top--large slds-m-left--large">
+                                <apex:commandButton value="List Ranking" action="{!searchPeopleForRanking}"
+                                                    id="rankingButton"
+                                                    styleClass="slds-button slds-button--neutral slds-m-right--small"
+                                                    reRender="results" />
+                            </div>
+                            
+                        </div>
+                        <div style="{!showHideTable}">
+                            <div class="slds-text-title_caps slds-m-bottom--x-small slds-m-top--large">
+                                Ranking
+                            </div>
+                            <div class="slds-m-left--large slds-text-title slds-m-bottom--large slds-m-top--small">
+                                <p>Displays all Employee/Candidates related to filters selected.</p> 
+                            </div>
+                            <div class="slds-text-align_center slds-m-top--large">
+                                <apex:dataTable value="{!people}" id="peopleRanking" var="p" styleClass="slds-text-title_caps slds-m-top--large slds-m-left--medium slds-m-right--medium  slds-m-bottom--medium">
+                                    <apex:column >
+                                        <apex:facet name="header">NAME</apex:facet>
+                                        <apex:outputLink value="/one/one.app#/sObject/{!p.personId}/view" target="_blank" style="color: {!p.color};">{!p.name}</apex:outputLink> 
+                                    </apex:column>
+                                    <apex:column style="color: {!p.color} !important;">
+                                        <apex:facet name="header">role</apex:facet>
+                                        {!p.role}
+                                    </apex:column>
+                                    <apex:column style="color: {!p.color} !important;">
+                                        <apex:facet name="header">seniority</apex:facet>
+                                        {!p.seniority}
+                                    </apex:column>
+                                    <apex:column style="color: {!p.color} !important;">
+                                        <apex:facet name="header">TEST PROM RESULTS</apex:facet>
+                                        {!p.testPromResults}
+                                    </apex:column>
+                                </apex:dataTable>
+                                <apex:outputPanel rendered="{!Empty}">
+                                    <div class="slds-text-title_caps slds-panel slds-align--absolute-center slds-text-body--regular slds-p-top--large slds-p-bottom--large">
+                                        No records
+                                    </div>
+                                </apex:outputPanel>
+                            </div>
+                        </div>
+                    </div>
+                </apex:outputPanel>
+            </apex:form>
+        </div>
+    </html>
+</apex:page>

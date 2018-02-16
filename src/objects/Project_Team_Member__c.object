@@ -60,6 +60,16 @@
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
         <label>Employee</label>
+        <lookupFilter>
+            <active>true</active>
+            <errorMessage>Former Employees can&apos;t be selected.</errorMessage>
+            <filterItems>
+                <field>Employee__c.Status__c</field>
+                <operation>notEqual</operation>
+                <value>Former Employee</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
         <referenceTo>Employee__c</referenceTo>
         <relationshipLabel>Projects</relationshipLabel>
         <relationshipName>Project_Team_Members</relationshipName>
@@ -131,6 +141,23 @@
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Project Team Members</pluralLabel>
-    <searchLayouts/>
+    <searchLayouts>
+        <customTabListAdditionalFields>Employee__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Role__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Project__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>Employee__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Role__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Project__c</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Employee__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Role__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Project__c</lookupPhoneDialogsAdditionalFields>
+        <searchFilterFields>NAME</searchFilterFields>
+        <searchFilterFields>Employee__c</searchFilterFields>
+        <searchFilterFields>Role__c</searchFilterFields>
+        <searchFilterFields>Project__c</searchFilterFields>
+        <searchResultsAdditionalFields>Employee__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Role__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Project__c</searchResultsAdditionalFields>
+    </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
 </CustomObject>

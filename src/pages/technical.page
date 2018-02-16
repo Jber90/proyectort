@@ -1,0 +1,153 @@
+<apex:page controller="TechnicalController" id="technical" title="Technical Test">
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <apex:includeScript value="{!URLFOR($Resource.JMjs, 'js/jquery_3_1_1.min.js')}"/>
+        
+        <apex:slds />
+        <style>
+            .inputs{
+            background-color: #fff;
+            color: #16325c;
+            border: 1px solid #d8dde6;
+            border-radius: .25rem;
+            height: 35px;
+            width: 50%;
+            transition: border .1s linear,background-color .1s linear; 
+            padding: 0 1rem 0 .75rem;
+            }
+            
+        </style>
+        <script>
+        
+         j$ = jQuery.noConflict(); 
+        
+        j$( document ).ready(function() {
+            document.getElementById('technical:form:startButton').disabled = true;
+        });
+        
+        function emptyValueCheck(input){
+            if(input.value < 100000000){
+                document.getElementById('technical:form:startButton').disabled = false;
+            } else{
+                document.getElementById('technical:form:startButton').disabled = true;
+            }
+        }
+        </script>
+        <div class="slds-p-around--large">
+            
+            <apex:form id="form">
+                <apex:outputPanel id="results">
+                    
+                    <!-- START  message dialog -->
+                    <div class="{!showHide}" id="errorMsg" style="height: 5rem;">
+                        <div class="slds-notify_container slds-is-relative">
+                            <div class="slds-notify slds-notify_toast slds-theme_error" role="alert">
+                                <div class="slds-notify__content">
+                                    <h2 class="slds-text-heading_small">{!message}</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END message dialog --> 
+                    <div class="slds-text-title_caps slds-text-align_center">
+                        <div style="{!showHideInput}">  
+                            <div class="slds-grid">
+                                
+                                <div class="slds-form-element slds-col slds-size_1-of-6 slds-m-right--small">
+                                    <label class="slds-form-element__label">Role</label>
+                                    <div class="slds-form-element__control">
+                                        <div class="slds-select_container">
+                                            <apex:selectList size="1" value="{!role}" styleClass="slds-select">
+                                                <apex:selectOptions value="{!RoleItems}" />
+                                            </apex:selectList>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slds-form-element slds-col slds-size_1-of-6 slds-m-right--small">
+                                    <label class="slds-form-element__label">Seniority</label>
+                                    <div class="slds-form-element__control">
+                                        <div class="slds-select_container">
+                                            <apex:selectList size="1" value="{!seniority}" styleClass="slds-select">
+                                                <apex:selectOptions value="{!SeniorityItems}" />
+                                            </apex:selectList>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slds-form-element slds-col slds-size_1-of-6 slds-m-right--small">
+                                    <label class="slds-form-element__label">Technology</label>
+                                    <div class="slds-form-element__control">
+                                        <div class="slds-select_container">
+                                            <apex:selectList size="1" value="{!technology}" styleClass="slds-select">
+                                                <apex:selectOptions value="{!TechnologyItems}" />
+                                            </apex:selectList>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slds-col slds-size_3-of-6 slds-m-top--large">
+                                    
+                                    <apex:inputText value="{!ciCandidate}" id="inputCI" maxlength="8"  size="8" styleClass="inputs"  onKeyUp="emptyValueCheck(this);" />
+                                    <apex:commandButton value="Start" action="{!start}"
+                                                        id="startButton"
+                                                        styleClass="slds-button slds-button--neutral  slds-m-right--small slds-m-left--small"
+                                                        reRender="results" />
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-text-title_caps slds-text-align_center slds-m-bottom--large" style="{!showHideName}">
+                        Welcome {!candidateName}, good luck!
+                        <div class="slds-text-title_caps slds-text-align_center slds-m-top--large" style=" line-height: 200%;">
+                            
+                            <apex:outputLabel escape="false" Value="{!question.questionText}" ></apex:outputLabel>
+                            
+                            <apex:dataTable value="{!question.options}" id="opciones" var="op"
+                                            styleClass="slds-m-top--large slds-m-left--medium slds-m-right--medium  slds-m-bottom--medium">
+                                <apex:column width="20">
+                                    <apex:inputCheckbox value="{!op.selected}"
+                                                        id="objectCheckbox">
+                                        
+                                    </apex:inputCheckbox>
+                                </apex:column>
+                                <apex:column >
+                                    {!op.option.Option_Text__c}
+                                </apex:column>
+                            </apex:dataTable>
+                            <apex:commandButton value="Previous" action="{!Previous}"
+                                                rerender="results"
+                                                style="border-style: none; padding-left: 1rem; padding-right: 1rem;"
+                                                styleClass="slds-button"
+                                                disabled="{!DisablePrevious}" />
+                            <apex:commandButton value="Next" action="{!Next}"
+                                                style="border-style: none; padding-left: 1rem; padding-right: 1rem;"
+                                                styleClass="slds-button"
+                                                reRender="results"
+                                                disabled="{!DisableNext}" />
+                        </div>
+                        
+                        <apex:commandButton value="See Results" action="{!checkResults}"
+                                            rerender="results"
+                                            styleClass="slds-button slds-button_success slds-m-right--small slds-m-bottom--x-small slds-float_right"/>
+                        
+                        
+                    </div>
+                    <div class="slds-text-title_caps slds-text-align_center slds-m-bottom--large" style="{!showHideResult}">
+                        {!candidateName}, These are your Results:
+                        <div class="slds-text-title_caps slds-text-align_center slds-m-top--large" style=" line-height: 200%;">
+                            <apex:dataTable value="{!results}" id="userResults" var="r"
+                                            styleClass="slds-m-top--large slds-m-left--medium slds-m-right--medium  slds-m-bottom--medium">
+                                
+                                <apex:column >
+                                    {!r}
+                                </apex:column>
+                            </apex:dataTable>
+                        </div>
+                        Result: {!allTestResult}
+                         <apex:commandButton value="Take an other Test" action="{!otherTest}"
+                                            rerender="results"
+                                            styleClass="slds-button slds-button_neutral slds-m-right--small slds-m-bottom--x-small slds-float_right"/>
+                    </div>
+                </apex:outputPanel>
+            </apex:form>
+        </div>
+    </html>
+</apex:page>

@@ -56,6 +56,34 @@
             <rowIndex>0</rowIndex>
             <rowSpan>4</rowSpan>
         </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>3</colSpan>
+            <columnIndex>6</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
+                <chartSummary>
+                    <axisBinding>y</axisBinding>
+                    <column>RowCount</column>
+                </chartSummary>
+                <componentType>Donut</componentType>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>false</enableHover>
+                <expandOthers>true</expandOthers>
+                <groupingColumn>Employee__c.Seniority__c</groupingColumn>
+                <header>Employees Seniority</header>
+                <legendPosition>Right</legendPosition>
+                <report>Reports/Employees_Seniority</report>
+                <showPercentage>false</showPercentage>
+                <showTotal>false</showTotal>
+                <showValues>false</showValues>
+                <sortBy>RowValueDescending</sortBy>
+                <useReportChart>false</useReportChart>
+            </dashboardComponent>
+            <rowIndex>0</rowIndex>
+            <rowSpan>4</rowSpan>
+        </dashboardGridComponents>
         <numberOfColumns>9</numberOfColumns>
         <rowHeight>80</rowHeight>
     </dashboardGridLayout>

@@ -9,39 +9,57 @@
         <name>ApexPage</name>
     </types>
     <types>
+        <members>BernalMartinez</members>
+        <members>BernalMartinezContract</members>
+        <members>BernalMartinezSettings</members>
+        <members>BernalMartinezTest</members>
+        <name>CustomApplication</name>
+    </types>
+    <types>
         <members>Candidate__c</members>
+        <members>EmployeeContract__c</members>
         <members>Employee__c</members>
+        <members>Option__c</members>
         <members>Position__c</members>
         <members>Project_Team_Member__c</members>
+        <members>Project_Technology__c</members>
         <members>Project__c</members>
+        <members>Technical_Question__c</members>
+        <members>Technical_Test__c</members>
         <members>Technology__c</members>
         <members>Training__c</members>
         <members>Work_Contract__c</members>
         <name>CustomObject</name>
     </types>
     <types>
-        <members>Candidate__c</members>
-        <members>Employee__c</members>
-        <members>Organization_Chart</members>
-        <members>Project__c</members>
-        <members>Technology__c</members>
+        <members>*</members>
         <name>CustomTab</name>
     </types>
     <types>
-        <members>Dashboard</members>
-        <members>Dashboard/BZCKWCJgyTTVDKLebmZcFAMCskKRbW</members>
         <members>Dashboard/Employees</members>
         <name>Dashboard</name>
     </types>
     <types>
         <members>Reports</members>
         <members>Reports/Candidates</members>
+        <members>Reports/CandidatesEmployees</members>
+        <members>Reports/Departures_by_Reason</members>
+        <members>Reports/Departures_by_Role</members>
+        <members>Reports/Departures_by_Seniority</members>
         <members>Reports/Employees</members>
         <members>Reports/EmployeesRoles</members>
         <members>Reports/EmployeesStatus</members>
+        <members>Reports/Employees_Seniority</members>
         <members>Reports/Employees_wanting_to_change_project_or_t</members>
         <members>Reports/Employees_without_project</members>
+        <members>Reports/Incorporation_by_Role</members>
+        <members>Reports/Incorporation_by_Seniority</members>
+        <members>Reports/Incorporations_in_each_month</members>
         <name>Report</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>StaticResource</name>
     </types>
     <version>36.0</version>
 </Package>
