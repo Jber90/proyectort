@@ -1,0 +1,86 @@
+<apex:page controller="TechnicalSkillsController" id="technicalSkills" title="Search for Technical Skills">
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        
+        <apex:slds />
+        
+        <style>
+            .searchInputs{
+            background-color: #fff;
+            color: #16325c;
+            border: 1px solid #d8dde6;
+            border-radius: .25rem;
+            width: 20%;
+            height: 35px;
+            transition: border .1s linear,background-color .1s linear; 
+            padding: 0 1rem 0 .75rem;
+            }
+            
+        </style>
+        
+        
+        <div class="slds-p-around--large">
+            <apex:form >
+                <apex:outputPanel id="results">
+                    <div class="slds-text-title_caps slds-text-align_center">
+                        <apex:inputText value="{!searchSkill}" id="inputSearch" styleClass="searchInputs"/>
+                        <apex:commandButton value="Search" action="{!searchSkill}"
+                                            id="searchButton"
+                                            styleClass="slds-button slds-button--neutral  slds-m-right--small slds-m-left--small"
+                                            reRender="results" />
+                        <apex:commandButton value="Clear" action="{!clear}"
+                                            id="clearButton"
+                                            styleClass="slds-button slds-button--neutral  slds-m-right--small slds-m-left--small"
+                                            reRender="results,inputSearch" />
+                        
+                        
+                        <div class="slds-text-title_caps slds-text-align_center" style="{!showHideTable}">
+                            <apex:dataTable value="{!employees}" id="employeesSearch" var="em" styleClass="slds-m-top--large slds-m-left--medium slds-m-right--medium  slds-m-bottom--medium">
+                                <apex:column >
+                                    <apex:facet name="header">NAME</apex:facet>
+                                    <apex:outputLink value="/one/one.app#/sObject/{!em.Id}/view" target="_blank">{!em.name}</apex:outputLink> 
+                                </apex:column>
+                                <apex:column >
+                                    <apex:facet name="header">SKILLS</apex:facet>
+                                    {!em.Skills__c}
+                                </apex:column>
+                                <apex:column >
+                                    <apex:facet name="header">ROLE</apex:facet>
+                                    {!em.Role__c}
+                                </apex:column>
+                                <apex:column >
+                                    <apex:facet name="header">LOCATION</apex:facet>
+                                    {!em.Location__c}
+                                </apex:column>
+                                <apex:column >
+                                    <apex:facet name="header">STATUS</apex:facet>
+                                    {!em.Status__c}
+                                </apex:column>
+                            </apex:dataTable>
+                            <apex:outputPanel rendered="{!Empty}">
+                                            <div class="slds-panel slds-align--absolute-center slds-text-body--regular slds-p-top--large slds-p-bottom--large">
+                                                No records
+                                            </div>
+                                            
+                                        </apex:outputPanel>
+                        <apex:commandButton value="Previous" action="{!Previous}"
+                                            rerender="results"
+                                            style="border-style: none; padding-left: 1rem; padding-right: 1rem;"
+                                            styleClass="slds-button"
+                                            disabled="{!DisablePrevious}" />
+                        <apex:commandButton value="Next" action="{!Next}"
+                                            style="border-style: none; padding-left: 1rem; padding-right: 1rem;"
+                                            styleClass="slds-button"
+                                            reRender="results"
+                                            disabled="{!DisableNext}" />
+                            
+                            
+                            
+                        </div>
+                        
+                    </div>
+                </apex:outputPanel>
+            </apex:form>
+            
+        </div>
+    </html>
+</apex:page>

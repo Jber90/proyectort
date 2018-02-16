@@ -1,0 +1,193 @@
+<apex:page controller="ContractsController" id="contracts" title="Contracts" docType="html-5.0">
+    <apex:includeLightning />
+    
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <apex:includeScript value="{!URLFOR($Resource.JMjs, 'js/jquery_3_1_1.min.js')}"/>
+        <apex:slds />
+        <style>
+            .inputs{
+            background-color: #fff;
+            color: #16325c;
+            border: 1px solid #d8dde6;
+            border-radius: .25rem;
+            height: 35px;
+            width: 50%;
+            transition: border .1s linear,background-color .1s linear; 
+            padding: 0 1rem 0 .75rem;
+            }
+            
+            .dateFormat{
+            visibility:hidden;
+            display: none;
+            }
+            
+        </style>
+        <script>
+        
+        j$ = jQuery.noConflict(); 
+        
+        j$( document ).ready(function() {
+            document.getElementById('contracts:form:searchEmployee').disabled = true;
+            document.getElementById('contracts:form:saveContract').disabled = true;
+        });
+        
+         function emptyValueCheck(input){
+            if(input.value > 10000000){
+                document.getElementById('contracts:form:searchEmployee').disabled = false;
+            } else{
+                document.getElementById('contracts:form:searchEmployee').disabled = true;
+            }
+        }
+        
+        function checkEmptyValuesOnNameAdress(){
+            var name = document.getElementById("contracts:form:name").value;
+            var address = document.getElementById("contracts:form:address").value;
+            
+            if(name != '' && address != ''){
+                document.getElementById('contracts:form:saveContract').disabled = false;
+            } else{
+                document.getElementById('contracts:form:saveContract').disabled = true;
+            }
+        }
+        
+        function save(){
+            document.getElementById("saveDialog").style.display = "inline";
+        }
+        
+        
+        
+        
+        </script>
+        
+        <div class="slds-p-around--small slds-m-bottom--large">
+            
+                    
+                    <!-- START  message dialog -->
+                    <div class="{!showHide}" id="saveDialog" style="height: 5rem;">
+                        <div class="slds-notify_container slds-is-relative">
+                            <div class="slds-notify slds-notify_toast slds-theme_success" role="alert">
+                                <div class="slds-notify__content">
+                                    <h2 class="slds-text-heading_small" id="saveMsg">Contract saved</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END message dialog --> 
+            <apex:form id="form">
+                <apex:outputPanel id="results">
+                    <div class="slds-text-title_caps slds-m-bottom--x-small slds-m-top--small">
+                        Contracts
+                    </div>
+                    <div class="slds-grid">
+                        
+                        <div class="slds-form-element slds-col slds-size_1-of-6 slds-m-right--small slds-m-top--small">
+                            <apex:inputText value="{!employee}" maxlength="8"  size="8" id="employee" styleClass="inputs"  onKeyUp="emptyValueCheck(this);checkEmptyValuesOnNameAdress();" />
+                            
+                            <apex:commandButton value="Search" action="{!searchEmployee}"
+                                                id="searchEmployee"
+                                                styleClass="slds-button slds-button--neutral  slds-m-right--small slds-m-left--small"
+                                                />
+                        </div>
+                        <div class="slds-form-element slds-col slds-size_1-of-6 slds-m-right--small">
+                            
+                        </div>
+                    </div>
+                    <div class="slds-text-body_regular slds-m-top--large slds-clearfix">
+                            <div class="slds-m-top--large slds-size_1-of-2">
+                                <div class="slds-form-element">
+                                    Full Name
+                                </div>
+                                <div class="slds-form-element">
+                                    <apex:inputText value="{!name}" id="name" styleClass="inputs" onKeyUp="checkEmptyValuesOnNameAdress();"/>
+                                    
+                                </div>
+                            </div>
+                            <div class="slds-m-top--large slds-size_1-of-2 slds-left">
+                                <div class="slds-form-element">
+                                    CI
+                                </div>
+                                <div class="slds-form-element">
+                                    <apex:inputText value="{!ci}" maxlength="8"  size="8" id="ci" styleClass="inputs"  onKeyUp="emptyValueCheck(this);checkEmptyValuesOnNameAdress();" />
+                                    
+                                </div>
+                            </div> 
+                            <div class="slds-m-top--large slds-size_1-of-2">
+                                <div class="slds-form-element">
+                                    Address 
+                                </div>
+                                <div class="slds-form-element">
+                                    <apex:inputText value="{!address}" id="address" styleClass="inputs" onKeyUp="checkEmptyValuesOnNameAdress();"/>
+                                    
+                                </div>
+                            </div>
+                            <div class="slds-m-top--large slds-size_1-of-2">
+                                <div class="slds-form-element">
+                                    Start Date 
+                                </div>
+                                <div class="slds-form-element">
+                                    <apex:input type="date" value="{!startDate}" id="startDate" onKeyUp="checkEmptyValuesOnNameAdress();"/>
+                                    
+                                </div>
+                            </div>
+                            <div class="slds-m-top--large slds-size_1-of-2">
+                                <div class="slds-form-element">
+                                    Job Title 
+                                </div>
+                                <div class="slds-form-element">
+                                    <apex:inputText value="{!jobTitle}" id="jobTitle" styleClass="inputs" onKeyUp="checkEmptyValuesOnNameAdress();"/>
+                                    
+                                </div>
+                            </div>
+                            <div class="slds-m-top--large slds-size_1-of-2">
+                                <div class="slds-form-element">
+                                    Description
+                                </div>
+                                <div class="slds-form-element">
+                                    <apex:inputText value="{!description}" id="description" styleClass="inputs" onKeyUp="checkEmptyValuesOnNameAdress();"/>
+                                    
+                                </div>
+                            </div>
+                            <div class="slds-m-top--large slds-size_1-of-2">
+                                <div class="slds-form-element">
+                                    Hours Of Work
+                                </div>
+                                <div class="slds-form-element">
+                                    <apex:inputText value="{!hoursOfWork}" maxlength="2"  size="2" id="hoursOfWork" styleClass="inputs" onKeyUp="checkEmptyValuesOnNameAdress();"/>
+                                    
+                                </div>
+                            </div>
+                            <div class="slds-m-top--large slds-size_1-of-2">
+                                <div class="slds-form-element">
+                                    Probationary Period
+                                </div>
+                                <div class="slds-form-element">
+                                    <apex:inputText value="{!probationaryPeriod}" maxlength="2"  size="2" id="probationaryPeriod" styleClass="inputs" onKeyUp="checkEmptyValuesOnNameAdress();"/>
+                                    
+                                </div>
+                            </div>
+                            <div class="slds-m-top--large slds-size_1-of-2">
+                                <div class="slds-form-element">
+                                    Salary
+                                </div>
+                                <div class="slds-form-element">
+                                    <apex:inputText value="{!salary}" maxlength="8"  size="8" id="salary" styleClass="inputs" onKeyUp="checkEmptyValuesOnNameAdress();"/>
+                                </div>
+                            </div>
+                        
+                        
+                        <div class="slds-m-top--large slds-float_right">
+                            
+                            <apex:commandButton value="Save" action="{!saveContract}"
+                                                id="saveContract" 
+                                                styleClass="slds-button slds-button--neutral  slds-m-right--small slds-m-left--small"
+                                                oncomplete="save()"/>
+                        </div>
+                        
+                        
+                    </div>
+                </apex:outputPanel>
+            </apex:form>
+        </div>
+        
+    </html>
+</apex:page>

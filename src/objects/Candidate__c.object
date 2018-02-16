@@ -59,7 +59,7 @@
         <fullName>Actual_Workplace__c</fullName>
         <externalId>false</externalId>
         <label>Actual Workplace</label>
-        <length>15</length>
+        <length>100</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -74,6 +74,18 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CI__c</fullName>
+        <externalId>false</externalId>
+        <label>CI</label>
+        <precision>8</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>true</unique>
     </fields>
     <fields>
         <fullName>Experience__c</fullName>
@@ -174,7 +186,7 @@
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>Semi-Senior</fullName>
+                <fullName>Semi Senior</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
@@ -203,12 +215,45 @@
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
+    <listViews>
+        <fullName>Altimetrik_Candidates</fullName>
+        <columns>NAME</columns>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>NAME</field>
+            <operation>notContain</operation>
+            <value>(Converted to Employee)</value>
+        </filters>
+        <label>Altimetrik Candidates</label>
+    </listViews>
     <nameField>
         <label>Candidate Name</label>
         <trackHistory>false</trackHistory>
         <type>Text</type>
     </nameField>
     <pluralLabel>Candidates</pluralLabel>
-    <searchLayouts/>
+    <searchLayouts>
+        <customTabListAdditionalFields>CI__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Role__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Seniority__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Actual_Workplace__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>CI__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Role__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Seniority__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Actual_Workplace__c</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>CI__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Role__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Seniority__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Actual_Workplace__c</lookupPhoneDialogsAdditionalFields>
+        <searchFilterFields>NAME</searchFilterFields>
+        <searchFilterFields>CI__c</searchFilterFields>
+        <searchFilterFields>Role__c</searchFilterFields>
+        <searchFilterFields>Seniority__c</searchFilterFields>
+        <searchFilterFields>Actual_Workplace__c</searchFilterFields>
+        <searchResultsAdditionalFields>CI__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Role__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Seniority__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Actual_Workplace__c</searchResultsAdditionalFields>
+    </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
 </CustomObject>

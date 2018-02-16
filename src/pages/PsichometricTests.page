@@ -1,0 +1,22 @@
+<apex:page controller="PsichometricTestsController" sidebar="false" renderAs="pdf">
+    <div>
+        <p>
+            Name: <apex:outputField value="{!CandidateInfo.Name}"/>
+        </p>
+        <p>
+            Role: <apex:outputField value="{!CandidateInfo.Role__c}"/>
+        </p>
+        <p>
+            Date: Montevideo, {!ActualDate}
+        </p>
+        <p>
+            Write something about you (in english), at least 3 paragraphs. You can talk about movies, videogames, hobbies, anything you want...
+        </p>
+    </div>
+    
+    <apex:repeat var="test" value="{!Tests}">
+        <div>
+            <img src="{!test}" />
+        </div>
+    </apex:repeat>
+</apex:page>

@@ -1,0 +1,9 @@
+<apex:page controller="ContractCreationController" sidebar="false" renderAs="pdf">
+    
+    <div>
+        HOME TEST
+         <p>
+            Name: <apex:outputField value="{!EmployeeContractInfo.FullName__c}"/>
+        </p>
+    </div>
+</apex:page>
