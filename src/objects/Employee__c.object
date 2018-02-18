@@ -412,6 +412,7 @@
         <fullName>All</fullName>
         <columns>NAME</columns>
         <columns>Role__c</columns>
+        <columns>Location__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>

@@ -83,7 +83,7 @@
                                     </div>
                                 </div>
                                 <div class="slds-col slds-size_3-of-6 slds-m-top--large">
-                                    
+                                    <label class="slds-form-element__label">CI</label>
                                     <apex:inputText value="{!ciCandidate}" id="inputCI" maxlength="8"  size="8" styleClass="inputs"  onKeyUp="emptyValueCheck(this);" />
                                     <apex:commandButton value="Start" action="{!start}"
                                                         id="startButton"

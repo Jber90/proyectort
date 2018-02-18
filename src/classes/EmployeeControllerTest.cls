@@ -165,4 +165,15 @@ public class EmployeeControllerTest {
         System.assertEquals('Test Project 2', projects[1].Name);
         
     }
+    
+    @isTest
+    static void testEmailAfterPositionCreated(){
+        Test.startTest();
+        Position__c position = new Position__c(Name = 'Designer', Requirements__c = 'Adobe, flash, javascript and html');
+        insert position;
+        Test.stopTest();
+        List<Position__c> positions = [SELECT id FROM Position__c];
+        System.assertEquals(1, positions.size());
+        
+    }
 }
