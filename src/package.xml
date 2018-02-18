@@ -9,6 +9,10 @@
         <name>ApexPage</name>
     </types>
     <types>
+        <members>*</members>
+        <name>ApexTrigger</name>
+    </types>
+    <types>
         <members>BernalMartinez</members>
         <members>BernalMartinezContract</members>
         <members>BernalMartinezSettings</members>
@@ -36,8 +40,16 @@
         <name>CustomTab</name>
     </types>
     <types>
+        <members>Dashboard</members>
+        <members>Dashboard/BZCKWCJgyTTVDKLebmZcFAMCskKRbW</members>
         <members>Dashboard/Employees</members>
+        <members>Dashboard/NBdpRRPpEqkLDOjJGWDpnylsERIllB</members>
         <name>Dashboard</name>
+    </types>
+    <types>
+        <members>PermissionSetAppStandard</members>
+        <members>PermissionSetAppSysAdm</members>
+        <name>PermissionSet</name>
     </types>
     <types>
         <members>Reports</members>
@@ -56,6 +68,10 @@
         <members>Reports/Incorporation_by_Seniority</members>
         <members>Reports/Incorporations_in_each_month</members>
         <name>Report</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>ReportType</name>
     </types>
     <types>
         <members>*</members>

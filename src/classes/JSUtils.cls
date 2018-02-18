@@ -18,10 +18,12 @@ public class JSUtils {
                 LIMIT 10];
     }
     
-    public static Employee__c getEmployee(Integer ci){
-        return [SELECT Id, Name, Address__c, CI__c, CompanyStartDate__c  FROM Employee__c 
+    public static List<Employee__c> getEmployee(Integer ci){
+        List<Employee__c> emp = new List<Employee__c>();
+        emp = [SELECT Id, Name, Address__c, CI__c, CompanyStartDate__c  FROM Employee__c 
                 WHERE CI__c = :ci
                 LIMIT 1];
+        return emp;
     }
     
     public static List<Candidate__c> getCandidate(Integer ci){

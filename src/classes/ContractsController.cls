@@ -23,7 +23,6 @@ public class ContractsController {
     
     public void saveContract(){
         if(name != '' && address != '' ){
-            
             EmployeeContract__c contract = new EmployeeContract__c();
             contract.CI__c = ci;
             contract.FullName__c  = name;
@@ -42,15 +41,19 @@ public class ContractsController {
     
     public void searchEmployee(){
         if(employee != null && employee > 0){
-            Employee__c employeeData = JSUtils.getEmployee(employee);
-            ci = employeeData.CI__c;
-            address = employeeData.Address__c;
-            startDate = employeeData.CompanyStartDate__c;
-            name = employeeData.Name;
-            employeeId = employeeData.Id;
-            hoursOfWork  = 9;
-            probationaryPeriod = 3;
-            salary = 25000;
+            List<Employee__c> employeeData = JSUtils.getEmployee(employee);
+            system.debug('employeeData');
+            system.debug(employeeData);
+            if(employeeData.size() > 0){
+                ci = employeeData[0].CI__c;
+                address = employeeData[0].Address__c;
+                startDate = employeeData[0].CompanyStartDate__c;
+                name = employeeData[0].Name;
+                employeeId = employeeData[0].Id;
+                hoursOfWork  = 9;
+                probationaryPeriod = 3;
+                salary = 25000;
+            }
         }
         
         
