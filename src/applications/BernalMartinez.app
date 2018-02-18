@@ -12,4 +12,5 @@
     <tab>standard-Dashboard</tab>
     <tab>Training__c</tab>
     <tab>Technical_Test__c</tab>
+    <tab>Position__c</tab>
 </CustomApplication>
